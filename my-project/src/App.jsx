@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useDebugValue } from "react";
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const Onclickhandler = () => {
+    console.log("Submit");
+  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex justify-center items-center">
+      <div className="bg-blue-400 py-10 mt-40 rounded-md w-1/4 flex justify-center items-center ">
+        <form className="w-full flex flex-col items-center">
+          <p className=" font-semibold text-3xl text-center">Login Form</p>
+          <input
+            placeholder="Enter email here"
+            className="block border-2 p-4 border-gray-400 m-5 rounded-md w-5/6 "
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            placeholder="Enter password here"
+            className="block border-2 p-4 border-gray-400 m-5 rounded-md w-5/6 "
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {/* <div className="flex justify-center items-center"> */}
+          <button
+            onClick={Onclickhandler}
+            className=" text-black w-5/6 bg-white p-4 m-4 rounded-md font-semibold hover:bg-slate-600 "
+            title="Submit"
+            type="button"
+          >
+            Login
+          </button>
+          {/* </div> */}
+        </form>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    </div>
+  );
+};
+export default App;
